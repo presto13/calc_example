@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./deploy/Dockerfile
+      target: prod
+    image: calc_example:${CALC_EXAMPLE_VERSION:-latest}
+    restart: always
+    env_file:
+    - .env
+    environment:
+      CALC_EXAMPLE_HOST: 0.0.0.0
