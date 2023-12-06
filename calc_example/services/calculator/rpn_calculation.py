@@ -10,7 +10,8 @@ class RPNCalculator:
         "+": (1, lambda x, y: x + y),  # Addition operation
         "-": (1, lambda x, y: x - y),  # Subtraction operation
         "*": (2, lambda x, y: x * y),  # Multiplication operation
-        "/": (2, lambda x, y: x / y),  # Division operation
+        "/": (2, lambda x, y: x / y if y != 0 else float("inf")),
+        # Division operation with check for division by zero
     }
 
     def _parse(self, expression: str) -> List[str]:
@@ -61,9 +62,23 @@ class RPNCalculator:
 
         for token in rpn_queue:
             if token in self.operators:
+                if len(stack) < 2:
+                    raise ValueError("Invalid expression")
+
                 y, x = stack.pop(), stack.pop()
-                stack.append(self.operators[token][1](x, y))
+                result = self.operators[token][1](x, y)
+
+                if result is float("inf"):
+                    raise ValueError("Division by zero")
+
+                stack.append(result)
             else:
+                if not token.isnumeric():
+                    raise ValueError(f"Invalid character: {token}")
+
                 stack.append(float(token))
+
+        if len(stack) != 1:
+            raise ValueError("Invalid expression")
 
         return stack[0]
