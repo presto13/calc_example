@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="/static/style/calculator.css">
+</head>
+<body>
+
+<form id="calculator-form">
+    <input type="number" id="firstNumber" placeholder="First Number">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="number" id="secondNumber" placeholder="Second Number">
+    <input type="text" id="result" readonly>
+
+    <button type="submit">Calculate</button>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/js/calculator.js"></script>
+
+</body>
+</html>
