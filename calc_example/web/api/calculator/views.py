@@ -29,7 +29,7 @@ class CalculatorInput(BaseModel):
 
     @field_validator("expression")
     @classmethod
-    def validate_length(cls, expression) -> str:
+    def validate_length(cls, expression: str) -> str:
         """
         Validate the length of the mathematical operation.
 
@@ -72,7 +72,7 @@ class CalculatorInput(BaseModel):
 
     @field_validator("expression")
     @classmethod
-    def validate_operators(cls, expression) -> str:
+    def validate_operators(cls, expression: str) -> str:
         """
         Validate the operator of the mathematical operation.
 

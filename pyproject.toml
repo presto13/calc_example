@@ -66,6 +66,12 @@ env = [
     "CALC_EXAMPLE_DB_BASE=calc_example_test",
 ]
 
+[[tool.mypy.overrides]]
+module = ["calc_example/tests.*"]
+ignore_errors = true
+
+
+
 [fastapi-template.options]
 project_name = "calc_example"
 api_type = "rest"
